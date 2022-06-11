@@ -22,39 +22,17 @@ public class Umpire{
         System.out.println(player2.getName()+" Chose: "+moveNames.get(player2.getChoice()));
 
         if(player1.getChoice()==player2.getChoice()){
-            System.out.println("Its A draw!!");
             result=0;
         }
         else if(player1.getChoice()=='r'){
-                if (player2.getChoice()=='p'){
-                    System.out.println(player2.getName()+" won!!");
-                    result=2;
-                }
-                else{
-                    System.out.println(player1.getName()+" won!!");
-                    result=1;
-                }
+                result= (player2.getChoice()=='p') ? 2:1;
 
             }
         else if (player1.getChoice()=='p') {
-                if (player2.getChoice()=='s') {
-                    System.out.println(player2.getName()+" won!!");
-                    result=2;
-                }
-                else {
-                    System.out.println(player1.getName()+" won!!");
-                    result=1;
-                }
+                result= (player2.getChoice()=='s') ? 2:1;
             }
         else {
-                if (player2.getChoice()=='r') {
-                    System.out.println(player2.getName()+" won!!");
-                    result=2;
-                }
-                else{
-                    System.out.println(player1.getName()+" won!!");
-                    result=1;
-                }
+                result= (player2.getChoice()=='r') ? 2:1;
             }
     return result;
     }
