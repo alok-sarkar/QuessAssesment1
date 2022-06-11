@@ -19,6 +19,5 @@ public class Main {
         System.out.println("Players Registered...\npress enter to continue....");
         scan.nextLine();
         Game.start(player1,player2);
-
     }
 }

@@ -4,6 +4,7 @@ import GameUtil.Screen;
 
 import java.util.Scanner;
 
+import static GameUtil.Validate.getConfirmation;
 import static GameUtil.Validate.isNotValid;
 
 public class Player {
@@ -32,9 +33,7 @@ public class Player {
 
     public void choose(){
         Scanner scan= new Scanner(System.in);
-        char confirmation='n';
         char[] validChoices=new char[]{'r','s','p'};
-        char[] validConfirmations =new char[]{'y','n'};
         do{
             Screen.clear();
             System.out.println("Your Options are: Rock[r],Paper[p],Scissors[s] ");
@@ -45,21 +44,8 @@ public class Player {
                 System.out.print("Invalid Choice\nPress Enter to continue..");
                 scan.nextLine();
                 scan.nextLine();
-            }else{
-                do {
-                    System.out.print("Are You Sure?[y/n]: ");
-                    confirmation=scan.next().charAt(0);
-                    confirmation=Character.toLowerCase(confirmation);
-                    if (isNotValid(confirmation, validConfirmations)){
-                        System.out.print("Invalid Choice\nPress Enter to continue..");
-                        scan.nextLine();
-                        scan.nextLine();
-                    }
-                }while (isNotValid(confirmation, validConfirmations));
-
             }
-
-        }while (isNotValid(choice,validChoices) || confirmation=='n');
+        }while (isNotValid(choice,validChoices) || getConfirmation("Are You Sure?[y/n]: ")=='n');
         scan.nextLine();
         System.out.println("You have chosen: "+choice);
         System.out.println("Press enter to continue....");
