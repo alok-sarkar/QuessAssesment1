@@ -5,11 +5,7 @@ import Models.Player;
 import java.util.Scanner;
 
 public class Main {
-    static void play(Player player1, Player player2)  {
-        player1.choose();
-        player2.choose();
-        Umpire.judge(player1,player2);
-    }
+
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
         Screen.clear();
@@ -22,7 +18,7 @@ public class Main {
         Player player2=new Player(player2Name);
         System.out.println("Players Registered...\npress enter to continue....");
         scan.nextLine();
-        play(player1,player2);
+        Game.start(player1,player2);
 
     }
 }
