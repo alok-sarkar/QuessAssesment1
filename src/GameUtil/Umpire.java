@@ -7,12 +7,15 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Umpire{
-    static HashMap<Character,String> moveNames= new HashMap<>();
+    public static HashMap<Character,String> moveNames= new HashMap<>();
     static {
         moveNames.put('r',"Rock");moveNames.put('p',"Paper");moveNames.put('s',"Scissor");
     }
     public static void giveInstructions(){
-        System.out.println("This is two player game");
+        char escCode = 0x1B;
+        int row = 2; int column = 35;
+        System.out.println(String.format("%c[%d;%df",escCode,row,column)+"[[This is two player game]]");
+//        System.out.println("[[This is two player game]]");
     }
     public static int judge(Player player1, Player player2){
         int result=-1;

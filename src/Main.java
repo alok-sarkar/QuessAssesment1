@@ -1,32 +1,35 @@
 import GameUtil.Screen;
-import GameUtil.Storage;
+
 import GameUtil.Umpire;
 import Models.Game;
 import Models.Player;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
-        HashMap<String,String> leaderoard=new HashMap<>();
-        Screen.clear();
-        String[] usersScores=Storage.loadData();
-        String[] highestScorer=usersScores[0].split("->");
-        System.out.println("Highest Score: "+highestScorer[0]);
-        Umpire.giveInstructions();
-        System.out.print("Player1, Enter your name: ");
-        String player1Name=scan.nextLine();
+        Player player2,player1;
+        String player1Name,player2Name;
+        do {
+            Screen.clear();
+            Umpire.giveInstructions();
+            System.out.print("Player1, Enter your name: ");
+            player1Name=scan.nextLine();
 
-        Player player1=new Player(player1Name);
-        System.out.print("Player2, Enter your name: ");
-        String player2Name=scan.nextLine();
-        Player player2=new Player(player2Name);
+            System.out.print("Player2, Enter your name: ");
+            player2Name=scan.nextLine();
 
-        System.out.println("Players Registered...\npress enter to continue....");
 
+            if(player1Name.compareTo(player2Name)==0)
+                System.out.println("Both Player's name cannot be same..");
+
+
+        }while (player1Name.compareTo(player2Name)==0);
+        player1=new Player(player1Name);
+        player2=new Player(player2Name);
+        System.out.println("press enter to continue....");
         scan.nextLine();
 
         Game.start(player1,player2);

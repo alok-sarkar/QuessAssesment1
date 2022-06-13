@@ -1,5 +1,6 @@
 package Models;
 
+import GameUtil.Screen;
 import GameUtil.Storage;
 import GameUtil.Umpire;
 import Models.Player;
@@ -8,6 +9,7 @@ import static GameUtil.Validate.getConfirmation;
 
 public class Game {
     static void play(Player player1, Player player2)  {
+        Screen.clear();
         player1.choose();
         player2.choose();
         int result=Umpire.judge(player1,player2);
@@ -30,11 +32,9 @@ public class Game {
             System.out.println("===============\nCurrent Score\n====================");
             System.out.println(player1.getName()+": "+player1.getScore());
             System.out.println(player2.getName()+": "+player2.getScore());
+
         }while (getConfirmation("Do You want To play again?[y/n]: ")=='y');
-        if(Storage.save(player1,player2)){
-            System.out.println("Score Saved successfully");
-        }
-        else
-            System.out.println("Could not save score");
+        Storage.save(player1,player2);
+
     }
 }
